@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="task1.properties"/>
+
+    <bean id="a" class="task1.A">
+        <property name="name" value="${name}"/>
+        <property name="number" value="${number}"/>
+    </bean>
+
+    <bean id="b" class="task1.B">
+        <constructor-arg name="a" ref="a"/>
+        <constructor-arg name="number" value="322"/>
+    </bean>
+
+    <bean id="d" class="task1.D" scope="prototype">
+        <property name="name" value="D is here"/>
+    </bean>
+
+    <bean id="c" class="task1.C">
+        <property name="number" value="666"/>
+        <lookup-method name="returnNewD" bean="d"/>
+    </bean>
+
+    <bean id="replaceMethod" class="task1.MethodReplacerImpl"/>
+
+    <bean id="e"
+          class="task1.E">
+        <property name="name" value="E is here"/>
+        <replaced-method name="scream" replacer="replaceMethod"/>
+    </bean>
+
+    <bean id="f" class="task1.F" init-method="initF" destroy-method="destroyF">
+        <property name="name" value="F is here"/>
+    </bean>
+
+</beans>
