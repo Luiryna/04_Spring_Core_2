@@ -1,6 +1,7 @@
-package task2.bean;
+package task2.bean.factory;
 
 import org.springframework.beans.factory.FactoryBean;
+import task2.bean.Employee;
 
 public class EmployeeFactory implements FactoryBean<Employee> {
     @Override
