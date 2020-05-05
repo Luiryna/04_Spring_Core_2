@@ -7,6 +7,9 @@ import task2.bean.Position;
 import task2.bean.Salary;
 import task2.bean.Skill;
 import task2.factory.EmployeeFactory;
+import task2.service.EmployeeService;
+import task2.service.PositionService;
+import task2.service.SalaryService;
 
 @Configuration
 public class BeanConfiguration {
@@ -36,5 +39,20 @@ public class BeanConfiguration {
     @Bean
     public Employee employee() throws Exception {
         return getEmployee().getObject();
+    }
+
+    @Bean
+    public EmployeeService employeeService() {
+        return new EmployeeService();
+    }
+
+    @Bean
+    public PositionService positionService() {
+        return new PositionService();
+    }
+
+    @Bean
+    public SalaryService salaryService() {
+        return new SalaryService();
     }
 }

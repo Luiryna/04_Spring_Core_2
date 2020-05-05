@@ -44,11 +44,11 @@ public class EmployeeFactory implements FactoryBean<Employee> {
 
     @PostConstruct
     public void myPostConstruct() {
-        System.out.println("myPostConstruct()");
+        System.out.println("myPostConstruct is here");
     }
 
     @PreDestroy
     public void cleanUp() {
-        System.out.println("cleanUp method");
+        System.out.println("cleanUp method is here");
     }
 }
