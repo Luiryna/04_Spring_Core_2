@@ -4,6 +4,9 @@ import org.springframework.beans.factory.FactoryBean;
 import task2.bean.Employee;
 import task2.bean.Position;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 public class EmployeeFactory implements FactoryBean<Employee> {
     private String name;
     private Position position;
@@ -37,5 +40,15 @@ public class EmployeeFactory implements FactoryBean<Employee> {
 
     public void setPosition(Position position) {
         this.position = position;
+    }
+
+    @PostConstruct
+    public void myPostConstruct() {
+        System.out.println("myPostConstruct()");
+    }
+
+    @PreDestroy
+    public void cleanUp() {
+        System.out.println("cleanUp method");
     }
 }

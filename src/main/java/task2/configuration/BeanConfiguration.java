@@ -25,7 +25,7 @@ public class BeanConfiguration {
         return new Skill("Java", 1);
     }
 
-    @Bean(name = "Employee")
+    @Bean(name = "Employee", initMethod = "myPostConstruct", destroyMethod = "cleanUp")
     public EmployeeFactory getEmployee() {
         EmployeeFactory factory = new EmployeeFactory();
         factory.setName("Ann");
