@@ -1,12 +1,15 @@
 package task2.bean;
 
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Position {
     @NotNull
     private String name;
     @NotNull
     private Salary salary;
+    private Set<Skill> skills = new HashSet<>();
 
     public Position() {
 
@@ -16,9 +19,10 @@ public class Position {
         this.name = name;
     }
 
-    public Position(String name, Salary salary) {
+    public Position(String name, Salary salary, Skill skill) {
         this.name = name;
         this.salary = salary;
+        skills.add(skill);
     }
 
     public String getName() {
@@ -35,6 +39,18 @@ public class Position {
 
     public void setSalary(Salary salary) {
         this.salary = salary;
+    }
+
+    public Set<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Set<Skill> skills) {
+        this.skills = skills;
+    }
+
+    public void setSkill(Skill skill) {
+        skills.add(skill);
     }
 
     @Override
